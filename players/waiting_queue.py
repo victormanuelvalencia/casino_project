@@ -1,0 +1,1 @@
+ # Gestión de cola para mesas populares

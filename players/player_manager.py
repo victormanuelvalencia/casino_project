@@ -1,0 +1,1 @@
+# CRUD de jugadores, validaciones, carga/guardado en JSON

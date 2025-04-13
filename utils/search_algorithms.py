@@ -1,0 +1,1 @@
+# Búsqueda lineal, binaria
