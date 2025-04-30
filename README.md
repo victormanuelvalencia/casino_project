@@ -43,7 +43,7 @@ casino/
 │
 ├── players/
 │   ├── player.py                 # Player class with stack-based history
-│   ├── player_manager.py         # Player CRUD and validation
+│   ├── player_controller.py         # Player CRUD and validation
 │   └── waiting_queue.py          # Queue management for popular tables
 │
 ├── reports/

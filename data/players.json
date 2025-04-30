@@ -1,0 +1,29 @@
+[
+    {
+        "full_name": "Juan Jos\u00e9 H",
+        "player_id": "A1000",
+        "balance": 2000.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
+        "full_name": "Lina M ",
+        "player_id": "B2000",
+        "balance": 20000.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
+        "full_name": "Karen D",
+        "player_id": "A3000",
+        "balance": 100000.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    }
+]

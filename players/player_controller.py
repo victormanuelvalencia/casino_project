@@ -5,7 +5,7 @@ import os
 from players.player import Player
 from utils.file_handler import read_json, write_json
 
-class PlayerManager:
+class PlayerController:
     def __init__(self, file_path="data/players.json"):
         self.file_path = file_path
         self.players = self.load_players()
@@ -21,7 +21,7 @@ class PlayerManager:
         data = [p.to_dict() for p in self.players]
         write_json(self.file_path, data)
 
-    def add_player(self, full_name, player_id, balance):
+    def create_player(self, full_name, player_id, balance):
         if self.get_player_by_id(player_id):
             raise ValueError(f"Player with ID {player_id} already exists.")
 
