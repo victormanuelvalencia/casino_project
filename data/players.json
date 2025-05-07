@@ -1,8 +1,35 @@
 [
     {
+        "full_name": "Babiel",
+        "player_id": "B20",
+        "balance": 200.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
+        "full_name": "juan",
+        "player_id": "1",
+        "balance": 100.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
         "full_name": "Juan Jos\u00e9 H",
         "player_id": "A1000",
-        "balance": 2000.0,
+        "balance": 1400.0,
+        "history": [],
+        "games_won": 1,
+        "games_lost": 2,
+        "total_bet": 800.0
+    },
+    {
+        "full_name": "Karen D",
+        "player_id": "A3000",
+        "balance": 100000.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
@@ -18,9 +45,27 @@
         "total_bet": 0
     },
     {
-        "full_name": "Karen D",
-        "player_id": "A3000",
-        "balance": 100000.0,
+        "full_name": "Mateo",
+        "player_id": "1000",
+        "balance": 9.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 5,
+        "total_bet": 191.0
+    },
+    {
+        "full_name": "yulian",
+        "player_id": "390",
+        "balance": 390.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
+        "full_name": "Z",
+        "player_id": "21",
+        "balance": 100.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,

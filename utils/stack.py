@@ -12,7 +12,7 @@ class Stack:
             raise IndexError("Pop from empty stack")
         return self.items.pop()
 
-    def peek(self):
+    def top(self):
         if self.is_empty():
             return None
         return self.items[-1]
@@ -28,3 +28,17 @@ class Stack:
 
     def clear(self):
         self.items = []
+
+"""
+s = Stack()
+
+s.push(1)
+s.push(2)
+s.push(3)
+print(s.top())
+print(s.size())
+print(s.pop())
+print(s.top())
+print(s.pop())
+print(s.pop())
+"""
