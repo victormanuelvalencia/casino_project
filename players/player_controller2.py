@@ -1,15 +1,14 @@
 from players.player import Player
 from utils.sorting_algorithms import *
 from utils.stack import Stack
-from utils.file_handler import *
+from utils.file_administration import *
 
-# Declaramos el archivo donde guardaremos la información de los jugadores
-PLAYER_FILE = "data/players.json"
 
 # Función para obtener un jugador por medio de su id
 def get_player_fromId(player_id):
+    sort_names_alphabetically()
     # Obtenemos y cargamos la informacion de players.json por medio de la ruta
-    players_data = read_json(PLAYER_FILE)
+    players_data = read_json()
 
     # Recorremos cada uno de los jugadores
     for data in players_data:
@@ -26,7 +25,7 @@ def get_player_fromId(player_id):
 # Función para crear un jugador
 def create_player():
     # Obtenemos la informacion del archivo players.json
-    players_data = read_json(PLAYER_FILE)
+    players_data = read_json()
 
     full_name = input("Full name: ")
     player_id = input("Player ID: ")
@@ -48,15 +47,15 @@ def create_player():
     players_data.append(player.to_dict())
     # Y sobrescribo el archivo
     # Puede cambiar con una funcion de actualizacion
-    write_json(PLAYER_FILE, players_data)
+    write_json(players_data)
     # Ordenamos los nombres alfabeticamente
-    sort_names_alphabetically(PLAYER_FILE)
+    sort_names_alphabetically()
 
     print("Player created successfully.")
 
 
 def update_player():
-    players_data = read_json(PLAYER_FILE)
+    players_data = read_json()
     player_id = input("Enter the player ID to update: ")
 
     for index, data in enumerate(players_data):
@@ -79,9 +78,9 @@ def update_player():
             # En la posicion del json escribimos la informacion del jugador
             players_data[index] = player.to_dict()
             # Escribimos los datos del jugador actualizados
-            write_json(PLAYER_FILE, players_data)
+            write_json(players_data)
             # Re organizamos alfabeticamente
-            sort_names_alphabetically(PLAYER_FILE)
+            sort_names_alphabetically()
             print("Player updated successfully.")
             return
 
@@ -90,19 +89,19 @@ def update_player():
 
 def delete_player():
     player_id = input("Enter the player ID to delete: ")
-    players_data = read_json(PLAYER_FILE)
+    players_data = read_json()
 
    # new_data = [p for p in players_data if p["player_id"] != player_id]
 
-    new_data = []
+    copy_data = []
     for p in players_data:
         if p["player_id"] != player_id:
-            new_data.append(p)
+            copy_data.append(p)
 
-    if len(new_data) == len(players_data):
+    if len(copy_data) == len(players_data):
         return print("Player not found.")
 
-    write_json(PLAYER_FILE, new_data)
+    write_json(copy_data)
     print("Player deleted successfully.")
 
 

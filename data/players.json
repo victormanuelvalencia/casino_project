@@ -1,71 +1,89 @@
 [
     {
-        "full_name": "Babiel",
-        "player_id": "B20",
-        "balance": 200.0,
+        "full_name": "Ana R",
+        "player_id": "AR5444",
+        "balance": 5000.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
         "total_bet": 0
     },
     {
-        "full_name": "juan",
-        "player_id": "1",
-        "balance": 100.0,
+        "full_name": "Carlos P",
+        "player_id": "CP4333",
+        "balance": 2750.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
         "total_bet": 0
     },
     {
-        "full_name": "Juan Jos\u00e9 H",
-        "player_id": "A1000",
-        "balance": 1400.0,
-        "history": [],
-        "games_won": 1,
-        "games_lost": 2,
-        "total_bet": 800.0
-    },
-    {
-        "full_name": "Karen D",
-        "player_id": "A3000",
-        "balance": 100000.0,
+        "full_name": "Diego F",
+        "player_id": "DF0999",
+        "balance": 2400.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
         "total_bet": 0
     },
     {
-        "full_name": "Lina M ",
-        "player_id": "B2000",
-        "balance": 20000.0,
+        "full_name": "Elena T",
+        "player_id": "ET9888",
+        "balance": 3500.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
         "total_bet": 0
     },
     {
-        "full_name": "Mateo",
-        "player_id": "1000",
-        "balance": 9.0,
+        "full_name": "Juan H",
+        "player_id": "HV2111",
+        "balance": 0.0,
         "history": [],
         "games_won": 0,
+        "games_lost": 3,
+        "total_bet": 3000.0
+    },
+    {
+        "full_name": "Lucia B",
+        "player_id": "LB1000",
+        "balance": 3800.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
+        "full_name": "Luis M",
+        "player_id": "LM6555",
+        "balance": 1200.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
+        "full_name": "Maria G",
+        "player_id": "MG3222",
+        "balance": 500.0,
+        "history": [],
+        "games_won": 2,
         "games_lost": 5,
-        "total_bet": 191.0
+        "total_bet": 1400.0
     },
     {
-        "full_name": "yulian",
-        "player_id": "390",
-        "balance": 390.0,
+        "full_name": "Pedro C",
+        "player_id": "PC8777",
+        "balance": 600.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
         "total_bet": 0
     },
     {
-        "full_name": "Z",
-        "player_id": "21",
-        "balance": 100.0,
+        "full_name": "Sofia N",
+        "player_id": "SN7666",
+        "balance": 4200.0,
         "history": [],
         "games_won": 0,
         "games_lost": 0,

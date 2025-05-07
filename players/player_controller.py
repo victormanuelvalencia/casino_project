@@ -3,7 +3,7 @@
 import json
 import os
 from players.player import Player
-from utils.file_handler import read_json, write_json
+from utils.file_administration import read_json, write_json
 
 class PlayerController:
     def __init__(self, file_path="data/players.json"):

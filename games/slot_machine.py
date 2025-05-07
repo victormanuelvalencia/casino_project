@@ -1,13 +1,13 @@
 import random
 from itertools import product
 from players.player import Player
-from utils.file_handler import read_json, write_json
+from utils.file_administration import *
 
-PLAYER_FILE = "data/players.json"
+
 
 
 def play_slot_machine(player: Player):
-    players_data = read_json(PLAYER_FILE)
+    players_data = read_json()
     matriz = [
         ["🍒", "🍊", "🍇"],
         ["🍒", "🍊", "🍇"],
@@ -29,6 +29,7 @@ def play_slot_machine(player: Player):
         if apuesta > player.get_balance():
             print("No tienes suficiente saldo para esa apuesta.")
             # Guardar lo que se tiene por ahora
+            update_player_in_data(player)
 
             return
 
@@ -53,12 +54,6 @@ def play_slot_machine(player: Player):
             break
 
     # Guardar cambios en el JSON
-    print(player)
-    print(player.to_dict())
-    for idx, data in enumerate(players_data):
-        if data["player_id"] == player.get_player_id():
-            players_data[idx] = player.to_dict()
-            break
-    write_json(PLAYER_FILE, players_data)
+    update_player_in_data(player)
     print("Gracias por jugar. ¡Hasta la próxima!")
 

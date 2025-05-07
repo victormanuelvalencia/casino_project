@@ -51,7 +51,7 @@ casino/
 │
 ├── utils/
 │   ├── custom_stack.py           # Custom stack implementation
-│   ├── file_handler.py           # JSON read/write
+│   ├── file_administration.py           # JSON read/write
 │   ├── search_algorithms.py      # Linear and binary search algorithms
 │   └── sorting_algorithms.py     # Bubble, selection, insertion, and merge sort
 │

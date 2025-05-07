@@ -31,10 +31,10 @@ if __name__ == "__main__":
     main_menu()
 """
 # main.py
-from players.player_controller2 import get_player_fromId, create_player, update_player, delete_player
-from games.slot_machine import play_slot_machine
-from utils.file_handler import read_json
-from players.player import Player
+from players.player_controller2 import *
+from games.slot_machine import *
+from utils.file_administration import *
+
 
 PLAYER_FILE = "data/players.json"
 
@@ -62,16 +62,7 @@ def player_menu():
         else:
             print("Opción inválida. Intenta nuevamente.")
 
-def seleccionar_jugador():
-    players_data = read_json(PLAYER_FILE)
-    for p in players_data:
-        print(f"{p['player_id']}: {p['full_name']}")
-    seleccion = input("Ingresa el ID del jugador que va a jugar: ")
-    for p in players_data:
-        if p["player_id"] == seleccion:
-            return Player.from_dict(p)
-    print("Jugador no encontrado.")
-    return None
+
 
 def game_menu():
     while True:
@@ -81,7 +72,7 @@ def game_menu():
         choice = input("Selecciona una opción: ")
 
         if choice == "1":
-            jugador = seleccionar_jugador()
+            jugador = player_selection()
             if jugador:
                 play_slot_machine(jugador)
         elif choice == "2":
@@ -97,7 +88,7 @@ def metrics_menu():
         choice = input("Selecciona una opción: ")
 
         if choice == "1":
-            jugador = seleccionar_jugador()
+            jugador = player_selection()
             if jugador:
                 print("\nHistorial:")
                 for entry in jugador.history:
