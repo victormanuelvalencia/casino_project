@@ -9,6 +9,15 @@
         "total_bet": 0
     },
     {
+        "full_name": "Buitrago",
+        "player_id": "20B",
+        "balance": 2000.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0
+    },
+    {
         "full_name": "Carlos P",
         "player_id": "CP4333",
         "balance": 2750.0,
@@ -45,13 +54,22 @@
         "total_bet": 3000.0
     },
     {
-        "full_name": "Lucia B",
-        "player_id": "LB1000",
-        "balance": 3800.0,
+        "full_name": "Karen Daniela",
+        "player_id": "KD53",
+        "balance": 900.0,
         "history": [],
         "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0
+        "games_lost": 6,
+        "total_bet": 14100.0
+    },
+    {
+        "full_name": "Lucia B",
+        "player_id": "LB1000",
+        "balance": 1400.0,
+        "history": [],
+        "games_won": 1,
+        "games_lost": 6,
+        "total_bet": 2600.0
     },
     {
         "full_name": "Luis M",

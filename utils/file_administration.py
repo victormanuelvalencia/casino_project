@@ -30,14 +30,3 @@ def update_player_in_data(player):
 
     # Guardar los cambios
     write_json(players_data)
-
-def player_selection():
-    players_data = read_json()
-    for p in players_data:
-        print(f"{p['player_id']}: {p['full_name']}")
-    seleccion = input("Ingresa el ID del jugador que va a jugar: ")
-    for p in players_data:
-        if p["player_id"] == seleccion:
-            return Player.from_dict(p)
-    print("Jugador no encontrado.")
-    return None

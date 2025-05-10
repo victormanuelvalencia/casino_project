@@ -17,9 +17,11 @@ def get_player_fromId(player_id):
         # estamos buscando por medio del parametro
         if data["player_id"] == player_id:
             player = Player.from_dict(data) # Cuando se encuentre, convertimos de diccionario
-                                            # a un objeto de la clase Player
-            return print(player) # Imprimimos por consola el objeto resultante
+            # Imprimimos por consola el objeto resultante
+            print(player)
+            return player
     print("Player not found.") # Si termina el ciclo sin hacer un retorno, entonces no existe el usuario
+    return False
 
 
 # Función para crear un jugador
@@ -31,9 +33,8 @@ def create_player():
     player_id = input("Player ID: ")
 
     # Buscamos si existe un jugador con este id
-    for p in players_data:
-        if p["player_id"] == player_id:
-            return print("A player with this ID already exists.")
+    if get_player_fromId(player_id):
+        return print("A player with this ID already exists.")
 
     try:
         balance = float(input("Initial balance: "))
@@ -58,33 +59,33 @@ def update_player():
     players_data = read_json()
     player_id = input("Enter the player ID to update: ")
 
+    player = get_player_fromId(player_id)
+    if not player:
+        return
+
+    print(f"Current full name: {player.get_full_name()}")
+    new_name = input("New full name (leave blank to keep current): ")
+    if new_name:
+        player.set_full_name(new_name)
+
+    print(f"Current balance: {player.get_balance()}")
+    new_balance = input("New balance (leave blank to keep current): ")
+    if new_balance:
+        try:
+            player.set_balance(float(new_balance))
+        except ValueError:
+            return print("Invalid balance. Update aborted.")
+
     for index, data in enumerate(players_data):
         if data["player_id"] == player_id:
-            player = Player.from_dict(data)
-
-            print(f"Current full name: {player.get_full_name()}")
-            new_name = input("New full name (leave blank to keep current): ")
-            if new_name:
-                player.set_full_name(new_name)
-
-            print(f"Current balance: {player.get_balance()}")
-            new_balance = input("New balance (leave blank to keep current): ")
-            if new_balance:
-                try:
-                    player.set_balance(float(new_balance))
-                except ValueError:
-                    return print("Invalid balance. Update aborted.")
-
-            # En la posicion del json escribimos la informacion del jugador
             players_data[index] = player.to_dict()
-            # Escribimos los datos del jugador actualizados
             write_json(players_data)
-            # Re organizamos alfabeticamente
             sort_names_alphabetically()
             print("Player updated successfully.")
             return
-
     print("Player not found.")
+    return
+
 
 
 def delete_player():
