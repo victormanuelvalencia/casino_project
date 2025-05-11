@@ -1,8 +1,8 @@
-
+from games.blackjack import blackjack
 # main.py
 from players.player_controller2 import *
 from games.slot_machine import *
-from utils.file_administration import *
+
 
 
 PLAYER_FILE = "data/players.json"
@@ -37,20 +37,24 @@ def game_menu():
     while True:
         print("\n--- Menú de Juegos ---")
         print("1. Jugar tragamonedas")
-        print("2. Volver al menú principal")
-
-        player_id = input("Ingresa el ID del jugador para jugar: ")
-        jugador = get_player_fromId(player_id)
-
-        if not jugador:
-            continue
-
-
+        print("2. Jugar blackjack")
+        print("3. Volver al menú principal")
 
         choice = input("Selecciona una opción: ")
-        if choice == "1":
-            play_slot_machine(jugador)
-        elif choice == "2":
+
+        if choice in ["1", "2"]:
+            player_id = input("Ingrese el ID del jugador: ")
+            player = get_player_fromId(player_id)
+
+            if not player:
+                print("Jugador no encontrado.")
+                continue
+
+            if choice == "1":
+                play_slot_machine(player)
+            elif choice == "2":
+                blackjack(player)
+        elif choice == "3":
             break
         else:
             print("Opción inválida. Intenta nuevamente.")
