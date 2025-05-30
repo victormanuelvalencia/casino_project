@@ -1,56 +1,137 @@
-# CRUD de jugadores, validaciones, carga/guardado en JSON
-
-import json
-import os
 from players.player import Player
-from utils.file_administration import read_json, write_json
+from utils.sorting_algorithms import *
+from utils.stack import Stack
+from utils.file_administration import *
 
-class PlayerController:
-    def __init__(self, file_path="data/players.json"):
-        self.file_path = file_path
-        self.players = self.load_players()
 
-    def load_players(self):
-        if not os.path.exists(self.file_path):
-            return []
+# Busqueda por nombre (lineal)
+def get_player_fromName(player_full_name):
+    sort_ids_alphabetically()
+    # Obtenemos y cargamos la informacion de players.json por medio de la ruta
+    players_data = read_json()
 
-        data = read_json(self.file_path)
-        return [Player.from_dict(p) for p in data]
+    # Recorremos cada uno de los jugadores
+    for data in players_data:
+       # print(data)
+        # Comparamos el nombre del diccionario del jugador en el que estamos con el que
+        # estamos buscando por medio del parametro
+        if data["full_name"] == player_full_name:
+            player = Player.from_dict(data) # Cuando se encuentre, convertimos de diccionario
+            # Imprimimos por consola el objeto resultante
+            print(player)
+            return player
+    # print("Player not found.") # Si termina el ciclo sin hacer un retorno, entonces no existe el usuario
+    return False
 
-    def save_players(self):
-        data = [p.to_dict() for p in self.players]
-        write_json(self.file_path, data)
+# Busqueda por nombre (binaria)
+def get_player_fromId(player_id):
+    sort_ids_alphabetically()
+    # Obtenemos y cargamos la informacion de players.json por medio de la ruta
+    players_data = read_json()
 
-    def create_player(self, full_name, player_id, balance):
-        if self.get_player_by_id(player_id):
-            raise ValueError(f"Player with ID {player_id} already exists.")
+    n = len(players_data)
 
-        new_player = Player(full_name, player_id, balance)
-        self.players.append(new_player)
-        self.save_players()
-        return new_player
+    left = 0
+    right = n - 1
 
-    def get_player_by_id(self, player_id):
-        for player in self.players:
-            if player.player_id == player_id:
-                return player
-        return None
+    while left <= right:
+        mid = (left + right) // 2
+        mid_name = players_data[mid]["player_id"].lower()
 
-    def update_balance(self, player_id, amount):
-        player = self.get_player_by_id(player_id)
-        if not player:
-            raise ValueError(f"Player with ID {player_id} not found.")
+        if mid_name == player_id.lower():
+            player = Player.from_dict(players_data[mid])
+            print(player)
+            return player
+        elif mid_name > player_id.lower():
+            right = mid - 1
+        else:
+            left = mid + 1
 
-        player.update_balance(amount)
-        self.save_players()
+    return False  # No encontrado
 
-    def delete_player(self, player_id):
-        player = self.get_player_by_id(player_id)
-        if player:
-            self.players.remove(player)
-            self.save_players()
-            return True
-        return False
+# Función para crear un jugador
+def create_player():
+    # Obtenemos la informacion del archivo players.json
+    players_data = read_json()
 
-    def list_players(self):
-        return self.players
+    full_name = input("Full name: ")
+    player_id = input("Player ID: ")
+
+    # Buscamos si existe un jugador con este id
+    if get_player_fromId(player_id):
+        return print("A player with this ID already exists.")
+
+    try:
+        balance = float(input("Initial balance: "))
+    except ValueError:
+        return print("Balance must be a number.")
+
+    # Instancia de Player con los inputs anteriores
+    player = Player(full_name, player_id, balance)
+    # Lo agregamos a la lista del archivo players.json la información en forma de diccionario
+    # con to_dict()
+    players_data.append(player.to_dict())
+    # Y sobrescribo el archivo
+    # Puede cambiar con una funcion de actualizacion
+    write_json(players_data)
+    # Ordenamos los nombres alfabeticamente
+    sort_ids_alphabetically()
+
+    print("Player created successfully.")
+
+
+def update_player():
+    players_data = read_json()
+    player_id = input("Enter the player ID to update: ")
+
+    player = get_player_fromId(player_id)
+    if not player:
+        return
+
+    print(f"Current full name: {player.get_full_name()}")
+    new_name = input("New full name (leave blank to keep current): ")
+    if new_name:
+        player.set_full_name(new_name)
+
+    print(f"Current balance: {player.get_balance()}")
+    new_balance = input("New balance (leave blank to keep current): ")
+    if new_balance:
+        try:
+            player.set_balance(float(new_balance))
+        except ValueError:
+            return print("Invalid balance. Update aborted.")
+
+    for index, data in enumerate(players_data):
+        if data["player_id"] == player_id:
+            players_data[index] = player.to_dict()
+            write_json(players_data)
+            sort_ids_alphabetically()
+            print("Player updated successfully.")
+            return
+    print("Player not found.")
+    return
+
+
+
+def delete_player():
+    player_id = input("Enter the player ID to delete: ")
+    players_data = read_json()
+
+   # new_data = [p for p in players_data if p["player_id"] != player_id]
+
+    copy_data = []
+    for p in players_data:
+        if p["player_id"] != player_id:
+            copy_data.append(p)
+
+    if len(copy_data) == len(players_data):
+        return print("Player not found.")
+
+    write_json(copy_data)
+    print("Player deleted successfully.")
+
+def add_history(player, action: str):
+    #timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    player.history.push(f"{action}")
+
+

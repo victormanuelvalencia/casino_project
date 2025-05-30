@@ -1,6 +1,6 @@
 from games.blackjack import blackjack
 # main.py
-from players.player_controller2 import *
+from players.player_controller import *
 from games.slot_machine import *
 
 
@@ -11,6 +11,7 @@ def player_menu():
     while True:
         print("\n--- Menú de Jugadores ---")
         print("1. Obtener jugador por ID")
+        print("6. Buscar jugador por nombre")
         print("2. Crear jugador")
         print("3. Actualizar jugador")
         print("4. Eliminar jugador")
@@ -18,14 +19,17 @@ def player_menu():
         choice = input("Selecciona una opción: ")
 
         if choice == "1":
-            pid = input("Ingresa el ID del jugador: ")
-            get_player_fromId(pid)
+            pId = input("Ingresa el ID del jugador: ")
+            get_player_fromId(pId)
         elif choice == "2":
             create_player()
         elif choice == "3":
             update_player()
         elif choice == "4":
             delete_player()
+        elif choice == "6":
+            pName = input("Ingresa el nombre del jugador: ")
+            get_player_fromName(pName)
         elif choice == "5":
             break
         else:

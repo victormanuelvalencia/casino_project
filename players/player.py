@@ -53,11 +53,8 @@ class Player:
         player.games_lost = data.get("games_lost", 0)
         player.total_bet = data.get("total_bet", 0)
         return player
-    """
-    def add_history(self, action: str):
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.history.push(f"[{timestamp}] {action}")
 
+    """    
     def update_balance(self, amount: float):
         self.balance += amount
         self.add_history(f"Balance updated by ${amount:.2f}. New balance: ${self.balance:.2f}")
@@ -101,8 +98,9 @@ class Player:
     def set_balance(self, balance: float):
         self.balance = balance
 
-    def set_history(self, history_stack: Stack):
-        self.history = history_stack
+    def set_history(self, action: str):
+        #self.history = history_stack
+        self.history.push(f"{action}")
 
     def set_games_won(self, games_won: int):
         self.games_won = games_won

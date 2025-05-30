@@ -1,14 +1,5 @@
 [
     {
-        "full_name": "Ana R",
-        "player_id": "AR5444",
-        "balance": 190.47619047619048,
-        "history": [],
-        "games_won": 1,
-        "games_lost": 0,
-        "total_bet": 200
-    },
-    {
         "full_name": "Buitrago",
         "player_id": "20B",
         "balance": 1809.0,
@@ -16,6 +7,15 @@
         "games_won": 1,
         "games_lost": 0,
         "total_bet": 1000
+    },
+    {
+        "full_name": "Ana R",
+        "player_id": "AR5444",
+        "balance": 190.47619047619048,
+        "history": [],
+        "games_won": 1,
+        "games_lost": 0,
+        "total_bet": 200
     },
     {
         "full_name": "Carlos P",
@@ -54,6 +54,15 @@
         "total_bet": 3000.0
     },
     {
+        "full_name": "Juan 2",
+        "player_id": "J021-",
+        "balance": 94714.0,
+        "history": [],
+        "games_won": 2,
+        "games_lost": 4,
+        "total_bet": 65000.0
+    },
+    {
         "full_name": "Karen Daniela",
         "player_id": "KD53",
         "balance": 0.0,
@@ -65,20 +74,30 @@
     {
         "full_name": "Lucia B",
         "player_id": "LB1000",
-        "balance": 1400.0,
-        "history": [],
-        "games_won": 1,
-        "games_lost": 6,
-        "total_bet": 2600.0
+        "balance": 480.0,
+        "history": [
+            "Apost\u00f3: 400.0",
+            "Gano: 780",
+            "Apost\u00f3: 1700.0",
+            "Gano: 3400",
+            "Apost\u00f3: 3000.0",
+            "Perdi\u00f3: 3000.0"
+        ],
+        "games_won": 3,
+        "games_lost": 7,
+        "total_bet": 7700.0
     },
     {
         "full_name": "Luis M",
         "player_id": "LM6555",
-        "balance": 1200.0,
-        "history": [],
-        "games_won": 0,
+        "balance": 2152.0,
+        "history": [
+            "Apost\u00f3: 1000.0",
+            "Gano: 1952"
+        ],
+        "games_won": 1,
         "games_lost": 0,
-        "total_bet": 0
+        "total_bet": 1000.0
     },
     {
         "full_name": "Maria G",

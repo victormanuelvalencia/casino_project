@@ -4,6 +4,8 @@ from players.player import Player
 from utils.file_administration import *
 
 
+game = 'slot machine'
+state = None
 
 
 def play_slot_machine(player: Player):
@@ -14,8 +16,9 @@ def play_slot_machine(player: Player):
         ["🍒", "🍊", "🍇"]
     ]
 
-    combinaciones = list(product(*matriz))  # Todas las posibles combinaciones
 
+    combinaciones = list(product(*matriz))  # Todas las posibles combinaciones
+    # print(combinaciones)
     while True:
         try:
             apuesta = float(input(f"Tu balance actual es ${player.get_balance():.2f}. ¿Cuánto deseas apostar?: "))

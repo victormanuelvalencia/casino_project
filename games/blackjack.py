@@ -44,9 +44,9 @@ def blackjack(player: Player, hand=0, turn=0, bet=0):
             return False
 
         # Insertamos el dinero y lo apostado resultante
+        player.set_history(f'Apostó: {bet}')
         player.set_balance(player.get_balance() - bet)
         player.set_total_bet(player.get_total_bet() + bet)
-
         # Primer turno: se reparten dos cartas
         card1 = deal_card()
         card2 = deal_card()
@@ -74,8 +74,9 @@ def blackjack(player: Player, hand=0, turn=0, bet=0):
         hand += value
         # Y si la mano se pasa de 21, pierde y se incrementa el contador games_lost
         if hand > 21:
+            player.set_games_lost(player.get_games_lost() + 1)
+            player.set_history(f'Perdió: {bet}')
             print("You went over 21. You lose.")
-            player.set_games_lost(player.get_games_lost() - 1)
             update_player_in_data(player)
             return False
         # De lo contrario, que continue con la llamada recursiva, con la mano actual y
@@ -86,8 +87,10 @@ def blackjack(player: Player, hand=0, turn=0, bet=0):
     # games_won y se actualiza la info
 
     else:
-        player.set_balance(player.get_balance() + calculate_bet(bet, hand))
+        earn = calculate_bet(bet, hand)
+        player.set_balance(player.get_balance() + earn)
         player.set_games_won(player.get_games_won() + 1)
+        player.set_history(f'Gano: {earn}')
         print(f'You retired. You won {calculate_bet(bet, hand)}, you have {player.get_balance()}')
         update_player_in_data(player)
 

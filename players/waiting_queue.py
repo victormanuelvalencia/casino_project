@@ -22,3 +22,16 @@ class WaitingQueue:
 
     def size(self):
         return len(self.queue)
+
+    def players_queue(self):
+
+        while True:
+            player_id = input('Ingrese el ID del jugador que se unirá a la mesa:')
+
+            self.add_player(player_id)
+
+            break_point = input('¿Desea seguir agregando jugadores? (y/n)').lower
+
+            if break_point == 'n':
+                break
+
