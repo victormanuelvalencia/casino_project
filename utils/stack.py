@@ -2,7 +2,10 @@
 
 class Stack:
     def __init__(self, initial_data=None):
-        self.items = initial_data if initial_data is not None else []
+        if initial_data is not None:
+            self.items = list(initial_data)
+        else:
+            self.items = []
 
     def push(self, item):
         self.items.append(item)
