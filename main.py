@@ -1,4 +1,5 @@
 from games.blackjack import blackjack
+from games.waiting_queue import PlayerQueue
 # main.py
 from players.player_controller import *
 from games.slot_machine import *
@@ -44,20 +45,16 @@ def game_menu():
         print("2. Jugar blackjack")
         print("3. Volver al menú principal")
 
-        choice = input("Selecciona una opción: ")
+        choice = input("Selecciona una opción: ").strip()
 
-        if choice in ["1", "2"]:
-            player_id = input("Ingrese el ID del jugador: ")
-            player = get_player_fromId(player_id)
-
-            if not player:
-                print("Jugador no encontrado.")
-                continue
-
-            if choice == "1":
-                play_slot_machine(player)
-            elif choice == "2":
-                blackjack(player)
+        if choice == "1":
+            queue = PlayerQueue()
+            queue.collect_players()
+            queue.process_queue(play_slot_machine)
+        elif choice == "2":
+            queue = PlayerQueue()
+            queue.collect_players()
+            queue.process_queue(blackjack)
         elif choice == "3":
             break
         else:

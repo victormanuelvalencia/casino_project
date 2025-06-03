@@ -39,7 +39,7 @@ class PlayerQueue(Queue):
         while not self.is_empty():
             player = self.dequeue()
 
-            print(f"\n>>> Turno de {player.get_id()} <<<")
+            print(f"\n>>> Turno de {player.get_full_name()} ({player.get_player_id()}) <<<")
             game_function(player)
 
             if not self.is_empty():

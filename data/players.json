@@ -2,11 +2,11 @@
     {
         "full_name": "Buitrago",
         "player_id": "20B",
-        "balance": 1809.0,
+        "balance": 1609.0,
         "history": [],
         "games_won": 1,
-        "games_lost": 0,
-        "total_bet": 1000
+        "games_lost": 1,
+        "total_bet": 1200.0
     },
     {
         "full_name": "Ana R",
@@ -90,14 +90,14 @@
     {
         "full_name": "Luis M",
         "player_id": "LM6555",
-        "balance": 2152.0,
+        "balance": 1552.0,
         "history": [
             "Apost\u00f3: 1000.0",
             "Gano: 1952"
         ],
-        "games_won": 1,
-        "games_lost": 0,
-        "total_bet": 1000.0
+        "games_won": 2,
+        "games_lost": 3,
+        "total_bet": 2200.0
     },
     {
         "full_name": "Maria G",
@@ -111,19 +111,25 @@
     {
         "full_name": "Pedro C",
         "player_id": "PC8777",
-        "balance": 600.0,
-        "history": [],
-        "games_won": 0,
+        "balance": 1142.0,
+        "history": [
+            "Apost\u00f3: 600.0",
+            "Gano: 1142"
+        ],
+        "games_won": 1,
         "games_lost": 0,
-        "total_bet": 0
+        "total_bet": 600.0
     },
     {
         "full_name": "Sofia N",
         "player_id": "SN7666",
-        "balance": 18009.0,
-        "history": [],
-        "games_won": 3,
-        "games_lost": 0,
-        "total_bet": 15000.0
+        "balance": 16009.0,
+        "history": [
+            "Apost\u00f3: 8000.0",
+            "Gano: 16000"
+        ],
+        "games_won": 4,
+        "games_lost": 1,
+        "total_bet": 33000.0
     }
 ]
