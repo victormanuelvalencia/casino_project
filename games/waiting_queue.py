@@ -1,6 +1,5 @@
 from utils.queue import Queue
-from players.player import Player
-from players.player_controller import get_player_fromId
+from controllers.player_controller import get_player_fromId
 
 
 class PlayerQueue(Queue):
@@ -11,7 +10,7 @@ class PlayerQueue(Queue):
         print("Escriba 'fin' para terminar\n")
 
         while True:
-            player_id = input("ID del jugador: ").strip()
+            player_id = input("ID del jugador: ")
 
             if player_id.lower() == 'fin':
                 if self.is_empty():

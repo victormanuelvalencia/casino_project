@@ -1,14 +1,13 @@
-from players.player import Player
+from models.player import Player
 from utils.sorting_algorithms import *
-from utils.stack import Stack
 from utils.file_administration import *
-
+from utils.config import PLAYER_FILE
 
 # Busqueda por nombre (lineal)
 def get_player_fromName(player_full_name):
-    sort_ids_alphabetically()
+    sort_elements_by("full_name", PLAYER_FILE)
     # Obtenemos y cargamos la informacion de players.json por medio de la ruta
-    players_data = read_json()
+    players_data = read_json(PLAYER_FILE)
 
     # Recorremos cada uno de los jugadores
     for data in players_data:
@@ -21,13 +20,14 @@ def get_player_fromName(player_full_name):
             print(player)
             return player
     # print("Player not found.") # Si termina el ciclo sin hacer un retorno, entonces no existe el usuario
+    print(-1)
     return False
 
 # Busqueda por nombre (binaria)
 def get_player_fromId(player_id):
-    sort_ids_alphabetically()
+    sort_elements_by("player_id", PLAYER_FILE)
     # Obtenemos y cargamos la informacion de players.json por medio de la ruta
-    players_data = read_json()
+    players_data = read_json(PLAYER_FILE)
 
     n = len(players_data)
 
@@ -47,12 +47,13 @@ def get_player_fromId(player_id):
         else:
             left = mid + 1
 
+    print(-1)
     return False  # No encontrado
 
 # Función para crear un jugador
 def create_player():
     # Obtenemos la informacion del archivo players.json
-    players_data = read_json()
+    players_data = read_json(PLAYER_FILE)
 
     full_name = input("Full name: ")
     player_id = input("Player ID: ")
@@ -73,7 +74,7 @@ def create_player():
     players_data.append(player.to_dict())
     # Y sobrescribo el archivo
     # Puede cambiar con una funcion de actualizacion
-    write_json(players_data)
+    write_json(players_data, PLAYER_FILE)
     # Ordenamos los nombres alfabeticamente
     sort_ids_alphabetically()
 
@@ -81,7 +82,7 @@ def create_player():
 
 
 def update_player():
-    players_data = read_json()
+    players_data = read_json(PLAYER_FILE)
     player_id = input("Enter the player ID to update: ")
 
     player = get_player_fromId(player_id)
@@ -104,7 +105,7 @@ def update_player():
     for index, data in enumerate(players_data):
         if data["player_id"] == player_id:
             players_data[index] = player.to_dict()
-            write_json(players_data)
+            write_json(players_data, PLAYER_FILE)
             sort_ids_alphabetically()
             print("Player updated successfully.")
             return
@@ -115,7 +116,7 @@ def update_player():
 
 def delete_player():
     player_id = input("Enter the player ID to delete: ")
-    players_data = read_json()
+    players_data = read_json(PLAYER_FILE)
 
    # new_data = [p for p in players_data if p["player_id"] != player_id]
 
@@ -127,11 +128,8 @@ def delete_player():
     if len(copy_data) == len(players_data):
         return print("Player not found.")
 
-    write_json(copy_data)
+    write_json(copy_data,PLAYER_FILE)
     print("Player deleted successfully.")
 
-def add_history(player, action: str):
-    #timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    player.history.push(f"{action}")
 
 

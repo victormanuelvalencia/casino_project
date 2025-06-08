@@ -1,17 +1,19 @@
 import random
 from itertools import product
-from players.player import Player
+
+from controllers.game_controller import get_game_fromName
 from utils.file_administration import *
+from utils.config import *
 
 
-game = 'slot machine'
-state = None
-contador = 0
+def play_slot_machine(player):
+
+    game_data = read_json(GAME_FILE)
+
+    game = get_game_fromName("slot_machine")
+    game.increment_count()
 
 
-def play_slot_machine(player: Player):
-
-    players_data = read_json()
     matriz = [
         ["🍒", "🍊", "🍇"],
         ["🍒", "🍊", "🍇"],
@@ -23,36 +25,39 @@ def play_slot_machine(player: Player):
     # print(combinaciones)
     while True:
         try:
-            apuesta = float(input(f"Tu balance actual es ${player.get_balance():.2f}. ¿Cuánto deseas apostar?: "))
-            if apuesta <= 0:
-                print("La apuesta debe ser mayor que cero.")
+            bet = float(input(f"Tu balance actual es ${player.get_balance():.2f}. ¿Cuánto deseas apostar?: "))
+            if bet <= 0:
+                print("La bet debe ser mayor que cero.")
                 continue
         except ValueError:
             print("Por favor, ingresa un número válido.")
             continue
 
-        if apuesta > player.get_balance():
-            print("No tienes suficiente saldo para esa apuesta.")
+        if bet > player.get_balance():
+            print("No tienes suficiente saldo para esa bet.")
             # Guardar lo que se tiene por ahora
             update_player_in_data(player)
 
             return
 
 
-        # Ejecutar la apuesta
-        player.set_balance(player.get_balance() - apuesta)
-        player.set_total_bet(player.get_total_bet() + apuesta)
+        # Ejecutar la bet
+        player.set_history(f'Bet in slot machine: {bet}')
+        player.set_balance(player.get_balance() - bet)
+        player.set_total_bet(player.get_total_bet() + bet)
 
         resultado = random.choice(combinaciones)
         print("Resultado:", resultado)
 
         if resultado[0] == resultado[1] == resultado[2]:
             print("¡Ganaste!")
-            premio = apuesta * 2  # Por ejemplo, duplicar la apuesta
-            player.set_balance(player.get_balance() + premio)
+            earn = bet * 2  # Por ejemplo, duplicar la bet
+            player.set_history(f'Won: {earn} in slot machine')
+            player.set_balance(player.get_balance() + earn)
             player.set_games_won(player.get_games_won() + 1)
         else:
             print("Perdiste.")
+            player.set_history(f'Lose: {bet} in slot machine')
             player.set_games_lost(player.get_games_lost() + 1)
 
         seguir = input("¿Deseas jugar otra vez? (s/n): ").strip().lower()

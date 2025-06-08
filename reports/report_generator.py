@@ -1,12 +1,12 @@
 # reportes/reportes.py (por ejemplo)
 
-from utils.sorting_algorithms import sort_players_by
+from utils.sorting_algorithms import sort_elements_by
 from utils.file_administration import read_json
-
+from utils.config import *
 
 def ranking_players_in(criteria):
     # Primero ordenamos por saldo (menor a mayor)
-    sort_players_by(criteria)
+    sort_elements_by(criteria, PLAYER_FILE)
 
     text = ""
     sing = ""
@@ -26,7 +26,7 @@ def ranking_players_in(criteria):
         type = "Games lost"
 
     # Luego leemos los datos ya ordenados
-    players = read_json()
+    players = read_json(PLAYER_FILE)
     n = len(players)
     # Mostramos los últimos 5 jugadores (los de mayor saldo)
     i = 1

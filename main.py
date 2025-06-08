@@ -1,7 +1,7 @@
 from games.blackjack import blackjack
 from games.waiting_queue import PlayerQueue
 # main.py
-from players.player_controller import *
+from controllers.player_controller import *
 from games.slot_machine import *
 from reports.report_generator import *
 
@@ -11,26 +11,26 @@ def player_menu():
     while True:
         print("\n--- Menú de Jugadores ---")
         print("1. Obtener jugador por ID")
-        print("6. Buscar jugador por nombre")
-        print("2. Crear jugador")
-        print("3. Actualizar jugador")
-        print("4. Eliminar jugador")
-        print("5. Volver al menú principal")
+        print("2. Buscar jugador por nombre")
+        print("3. Crear jugador")
+        print("4. Actualizar jugador")
+        print("5. Eliminar jugador")
+        print("6. Volver al menú principal")
         choice = input("Selecciona una opción: ")
 
         if choice == "1":
             pId = input("Ingresa el ID del jugador: ")
             get_player_fromId(pId)
         elif choice == "2":
-            create_player()
-        elif choice == "3":
-            update_player()
-        elif choice == "4":
-            delete_player()
-        elif choice == "6":
             pName = input("Ingresa el nombre del jugador: ")
             get_player_fromName(pName)
+        elif choice == "3":
+            create_player()
+        elif choice == "4":
+            update_player()
         elif choice == "5":
+            delete_player()
+        elif choice == "6":
             break
         else:
             print("Opción inválida. Intenta nuevamente.")
@@ -73,14 +73,14 @@ def metrics_menu():
 
         if choice == "1":
             ranking_players_in("balance")
-        if choice == "2":
+        elif choice == "2":
             player_id = input("Player's ID: ")
             player = get_player_fromId(player_id)
             if player:
                 player.get_history()
-        if choice == "3":
+        elif choice == "3":
             ranking_players_in("games_won")
-        if choice == "4":
+        elif choice == "4":
             ranking_players_in("games_lost")
         elif choice == "6":
             break
