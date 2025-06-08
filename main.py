@@ -3,8 +3,7 @@ from games.waiting_queue import PlayerQueue
 # main.py
 from players.player_controller import *
 from games.slot_machine import *
-
-
+from reports.report_generator import *
 
 PLAYER_FILE = "data/players.json"
 
@@ -63,23 +62,30 @@ def game_menu():
 def metrics_menu():
     while True:
         print("\n--- Menú de Métricas ---")
-        print("1. Ver historial de un jugador")
-        print("2. Volver al menú principal")
-        choice = input("Selecciona una opción: ")
+        print("1. Show players with best balance")
+        print("2. Show history of a player")
+        print("3. Show top players")
+        print("4. Show players at the bottom")
+        print("5. Show more played games")
+        print("6. Return to main menu")
+
+        choice = input("Choose an option: ")
 
         if choice == "1":
-            jugador = get_player_fromId()
-            if jugador:
-                print("\nHistorical:")
-                for entry in jugador.history:
-                    print(entry)
-                print(f"\nTotal apostado: ${jugador.total_bet}")
-                print(f"Juegos ganados: {jugador.games_won}")
-                print(f"Juegos perdidos: {jugador.games_lost}")
-        elif choice == "2":
+            ranking_players_in("balance")
+        if choice == "2":
+            player_id = input("Player's ID: ")
+            player = get_player_fromId(player_id)
+            if player:
+                player.get_history()
+        if choice == "3":
+            ranking_players_in("games_won")
+        if choice == "4":
+            ranking_players_in("games_lost")
+        elif choice == "6":
             break
         else:
-            print("Opción inválida. Intenta nuevamente.")
+            print("Invalid option. Try again.")
 
 def main_menu():
     while True:

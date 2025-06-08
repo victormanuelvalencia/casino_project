@@ -6,9 +6,11 @@ from utils.file_administration import *
 
 game = 'slot machine'
 state = None
+contador = 0
 
 
 def play_slot_machine(player: Player):
+
     players_data = read_json()
     matriz = [
         ["🍒", "🍊", "🍇"],
@@ -35,6 +37,7 @@ def play_slot_machine(player: Player):
             update_player_in_data(player)
 
             return
+
 
         # Ejecutar la apuesta
         player.set_balance(player.get_balance() - apuesta)

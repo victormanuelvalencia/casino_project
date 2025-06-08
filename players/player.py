@@ -77,7 +77,8 @@ class Player:
         return self.balance
 
     def get_history(self):
-        return self.history
+        print(f"\nHistory of player {self.full_name} (ID: {self.player_id}):")
+        self.history.show()
 
     def get_games_won(self):
         return self.games_won

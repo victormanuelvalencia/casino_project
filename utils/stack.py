@@ -32,3 +32,11 @@ class Stack:
     def clear(self):
         self.items = []
 
+    def show(self):
+        if self.is_empty():
+            print("The stack is empty.")
+        else:
+            for item in self.items:
+                print(item)
+
+
