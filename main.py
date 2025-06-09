@@ -8,21 +8,33 @@ from reports.report_generator import *
 PLAYER_FILE = "data/players.json"
 
 def player_menu():
+    """
+    Displays the Player Management Menu.
+    Allows users to:
+    1. Retrieve a player by their ID
+    2. Search for a player by name
+    3. Create a new player
+    4. Update an existing player's information
+    5. Delete a player
+    6. Return to the main menu
+
+    Repeats until the user opts to return.
+    """
     while True:
-        print("\n--- Menú de Jugadores ---")
-        print("1. Obtener jugador por ID")
-        print("2. Buscar jugador por nombre")
-        print("3. Crear jugador")
-        print("4. Actualizar jugador")
-        print("5. Eliminar jugador")
-        print("6. Volver al menú principal")
-        choice = input("Selecciona una opción: ")
+        print("\n--- Player Menu ---")
+        print("1. Get player by ID")
+        print("2. Search player by name")
+        print("3. Create player")
+        print("4. Update player")
+        print("5. Delete player")
+        print("6. Return to main menu")
+        choice = input("Select an option: ")
 
         if choice == "1":
-            pId = input("Ingresa el ID del jugador: ")
+            pId = input("Enter player ID: ")
             get_player_fromId(pId)
         elif choice == "2":
-            pName = input("Ingresa el nombre del jugador: ")
+            pName = input("Enter player name: ")
             get_player_fromName(pName)
         elif choice == "3":
             create_player()
@@ -33,18 +45,26 @@ def player_menu():
         elif choice == "6":
             break
         else:
-            print("Opción inválida. Intenta nuevamente.")
-
-
+            print("Invalid option. Please try again.")
 
 def game_menu():
-    while True:
-        print("\n--- Menú de Juegos ---")
-        print("1. Jugar tragamonedas")
-        print("2. Jugar blackjack")
-        print("3. Volver al menú principal")
+    """
+    Displays the Game Menu.
+    Allows users to:
+    1. Play the slot machine game
+    2. Play blackjack
+    3. Return to the main menu
 
-        choice = input("Selecciona una opción: ").strip()
+    For games, players are queued before playing.
+    Loops until the user chooses to return.
+    """
+    while True:
+        print("\n--- Game Menu ---")
+        print("1. Play slot machine")
+        print("2. Play blackjack")
+        print("3. Return to main menu")
+
+        choice = input("Select an option: ").strip()
 
         if choice == "1":
             queue = PlayerQueue()
@@ -57,16 +77,28 @@ def game_menu():
         elif choice == "3":
             break
         else:
-            print("Opción inválida. Intenta nuevamente.")
+            print("Invalid option. Please try again.")
 
 def metrics_menu():
+    """
+    Displays the Player Metrics Menu.
+    Provides options to view:
+    1. Players with the highest balance
+    2. History of a specific player by ID
+    3. Top players by games won
+    4. Players with the most losses
+    5. Most played games (option placeholder)
+    6. Return to main menu
+
+    Continuously prompts until exit option is selected.
+    """
     while True:
-        print("\n--- Menú de Métricas ---")
+        print("\n--- Metrics Menu ---")
         print("1. Show players with best balance")
         print("2. Show history of a player")
         print("3. Show top players")
         print("4. Show players at the bottom")
-        print("5. Show more played games")
+        print("5. Show most played games")
         print("6. Return to main menu")
 
         choice = input("Choose an option: ")
@@ -82,19 +114,28 @@ def metrics_menu():
             ranking_players_in("games_won")
         elif choice == "4":
             ranking_players_in("games_lost")
+        elif choice == "5":
+            # Placeholder: implementation for most played games metric
+            print("Feature coming soon.")
         elif choice == "6":
             break
         else:
-            print("Invalid option. Try again.")
+            print("Invalid option. Please try again.")
 
 def main_menu():
+    """
+    Main application menu that orchestrates navigation between
+    Player Management, Game Play, and Metrics menus.
+
+    Provides an exit option to terminate the application.
+    """
     while True:
-        print("\n=== Menú Principal ===")
-        print("1. Menú de jugadores")
-        print("2. Menú de juegos")
-        print("3. Métricas de jugadores")
-        print("4. Salir")
-        choice = input("Selecciona una opción: ")
+        print("\n--- Main Menu ---")
+        print("1. Player Menu")
+        print("2. Game Menu")
+        print("3. Player Metrics")
+        print("4. Exit")
+        choice = input("Select an option: ")
 
         if choice == "1":
             player_menu()
@@ -103,11 +144,10 @@ def main_menu():
         elif choice == "3":
             metrics_menu()
         elif choice == "4":
-            print("Saliendo...")
+            print("Exiting...")
             break
         else:
-            print("Opción inválida. Intenta nuevamente.")
+            print("Invalid option. Please try again.")
 
 if __name__ == "__main__":
     main_menu()
-

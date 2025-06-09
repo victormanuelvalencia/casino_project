@@ -5,66 +5,70 @@ from controllers.game_controller import get_game_fromName
 from utils.file_administration import *
 from utils.config import *
 
-
 def play_slot_machine(player):
-
+    """
+    Executes a slot machine game session for a given player.
+    Handles user interaction, bet processing, and updates the player's statistics accordingly.
+    """
+    
+    # Load game data and increment the play count
     game_data = read_json(GAME_FILE)
-
     game = get_game_fromName("slot_machine")
     game.increment_count()
 
-
-    matriz = [
+    # Define the slot machine matrix (3 columns of symbols)
+    matrix = [
         ["🍒", "🍊", "🍇"],
         ["🍒", "🍊", "🍇"],
         ["🍒", "🍊", "🍇"]
     ]
 
+    # Generate all possible combinations (one symbol from each column)
+    combinations = list(product(*matrix))
 
-    combinaciones = list(product(*matriz))  # Todas las posibles combinaciones
-    # print(combinaciones)
     while True:
+        # Prompt the player for a betting amount
         try:
-            bet = float(input(f"Tu balance actual es ${player.get_balance():.2f}. ¿Cuánto deseas apostar?: "))
+            bet = float(input(f"Your current balance is ${player.get_balance():.2f}. How much do you want to bet?: "))
             if bet <= 0:
-                print("La bet debe ser mayor que cero.")
+                print("The bet must be greater than zero.")
                 continue
         except ValueError:
-            print("Por favor, ingresa un número válido.")
+            print("Please enter a valid number.")
             continue
 
+        # Ensure the player has enough balance
         if bet > player.get_balance():
-            print("No tienes suficiente saldo para esa bet.")
-            # Guardar lo que se tiene por ahora
+            print("Insufficient balance to place this bet.")
             update_player_in_data(player)
-
             return
 
-
-        # Ejecutar la bet
+        # Register the bet in the player's history and adjust balance
         player.set_history(f'Bet in slot machine: {bet}')
         player.set_balance(player.get_balance() - bet)
         player.set_total_bet(player.get_total_bet() + bet)
 
-        resultado = random.choice(combinaciones)
-        print("Resultado:", resultado)
+        # Randomly select a result from the possible combinations
+        result = random.choice(combinations)
+        print("Result:", result)
 
-        if resultado[0] == resultado[1] == resultado[2]:
-            print("¡Ganaste!")
-            earn = bet * 2  # Por ejemplo, duplicar la bet
-            player.set_history(f'Won: {earn} in slot machine')
-            player.set_balance(player.get_balance() + earn)
+        # Check if all three symbols match
+        if result[0] == result[1] == result[2]:
+            print("You won!")
+            earnings = bet * 2  # Double the bet as a prize
+            player.set_history(f'Won: {earnings} in slot machine')
+            player.set_balance(player.get_balance() + earnings)
             player.set_games_won(player.get_games_won() + 1)
         else:
-            print("Perdiste.")
-            player.set_history(f'Lose: {bet} in slot machine')
+            print("You lost.")
+            player.set_history(f'Lost: {bet} in slot machine')
             player.set_games_lost(player.get_games_lost() + 1)
 
-        seguir = input("¿Deseas jugar otra vez? (s/n): ").strip().lower()
-        if seguir != 's':
+        # Ask the player if they want to play again
+        again = input("Do you want to play again? (y/n): ").strip().lower()
+        if again != 'y':
             break
 
-    # Guardar cambios en el JSON
+    # Persist player's updated information
     update_player_in_data(player)
-    print("Gracias por jugar. ¡Hasta la próxima!")
-
+    print("Thanks for playing. See you next time!")

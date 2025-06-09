@@ -1,47 +1,58 @@
 from utils.queue import Queue
 from controllers.player_controller import get_player_fromId
 
-
 class PlayerQueue(Queue):
     def collect_players(self):
-        """Recolecta los IDs de los jugadores mediante input"""
-        print("\n--- Agregar Jugadores a la Cola ---")
-        print("Ingrese los IDs de los jugadores (uno por línea)")
-        print("Escriba 'fin' para terminar\n")
+        """
+        Collects players by their IDs via user input and enqueues them.
+        Ensures that only existing players are added to the queue.
+        """
+        print("\n--- Add Players to the Queue ---")
+        print("Enter the player IDs (one per line).")
+        print("Type 'fin' to finish.\n")
 
         while True:
-            player_id = input("ID del jugador: ")
+            player_id = input("Player ID: ")
 
+            # Terminate input if user types 'fin'
             if player_id.lower() == 'fin':
                 if self.is_empty():
-                    print("¡Debe agregar al menos un jugador!")
+                    print("You must add at least one player!")
                     continue
                 break
 
+            # Validate that input is not empty
             if not player_id:
-                print("ID no puede estar vacío")
+                print("ID cannot be empty.")
                 continue
 
-            # Verificar si el jugador existe
+            # Verify player existence
             player = get_player_fromId(player_id)
             if not player:
-                print(f"¡Jugador con ID {player_id} no encontrado!")
+                print(f"No player found with ID: {player_id}")
                 continue
 
-            self.enqueue(player)  # Almacenamos el objeto Player directamente
-            print(f"Jugador {player_id} agregado. Total en cola: {self.size()}")
+            # Enqueue the player object directly
+            self.enqueue(player)
+            print(f"Player {player_id} added. Players in queue: {self.size()}")
 
     def process_queue(self, game_function):
-        """Procesa la cola de jugadores para un juego específico"""
-        print("\n--- Procesando Cola de Jugadores ---")
+        """
+        Processes the queue by executing the provided game function
+        for each player in FIFO order.
+        
+        Parameters:
+        - game_function: a function that accepts a Player object and executes a game round.
+        """
+        print("\n--- Processing Player Queue ---")
 
         while not self.is_empty():
             player = self.dequeue()
 
-            print(f"\n>>> Turno de {player.get_full_name()} ({player.get_player_id()}) <<<")
+            print(f"\n>>> {player.get_full_name()} ({player.get_player_id()})'s Turn <<<")
             game_function(player)
 
             if not self.is_empty():
-                input("\nPresione Enter para pasar al siguiente jugador...")
+                input("\nPress Enter to continue to the next player...")
 
-        print("\nTodos los jugadores han completado su turno.")
+        print("\nAll players have completed their turns.")
