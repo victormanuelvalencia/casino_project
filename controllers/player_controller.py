@@ -5,6 +5,17 @@ from utils.config import PLAYER_FILE
 
 # Linear search for a player by full name
 def get_player_fromName(player_full_name):
+    """
+    Searches for a player by their full name using linear search.
+
+    Parameters:
+    - player_full_name (str): The full name of the player to search for.
+
+    Returns:
+    - Player: The matching Player object if found.
+    - False: If no player with the given name is found.
+    """
+
     # Sort players by their full name before searching
     sort_elements_by("full_name", PLAYER_FILE)
 
@@ -26,6 +37,18 @@ def get_player_fromName(player_full_name):
 
 # Binary search for a player by player_id
 def get_player_fromId(player_id):
+    """
+    Searches for a player by their ID using binary search.
+    The list is sorted by ID before performing the search.
+
+    Parameters:
+    - player_id (str): The unique identifier of the player to search for.
+
+    Returns:
+    - Player: The matching Player object if found.
+    - False: If no player with the given ID is found.
+    """
+
     # Sort players by their ID before performing binary search
     sort_elements_by("player_id", PLAYER_FILE)
 
@@ -56,6 +79,21 @@ def get_player_fromId(player_id):
 
 # Function to create a new player
 def create_player():
+    """
+    Creates a new player based on input provided by the user.
+
+    Parameters:
+    - None directly. Prompts the user for full name, ID, and initial balance.
+
+    Flow:
+    - Checks for ID duplication.
+    - Validates the initial balance.
+    - Creates and stores the new player in the JSON file.
+
+    Returns:
+    - None: Outputs status messages to the console.
+    """
+
     # Load existing player data
     players_data = read_json(PLAYER_FILE)
 
@@ -88,6 +126,21 @@ def create_player():
 
 # Function to update an existing player
 def update_player():
+    """
+    Updates an existing player's full name and/or balance.
+
+    Parameters:
+    - None directly. Prompts the user for the player ID and new data.
+
+    Flow:
+    - Retrieves the player by ID.
+    - Allows the user to update the name and balance (optional).
+    - Saves the updated data back to the file.
+
+    Returns:
+    - None: Outputs success or failure messages to the console.
+    """
+
     # Load current player data
     players_data = read_json(PLAYER_FILE)
     player_id = input("Enter the player ID to update: ")
@@ -126,6 +179,21 @@ def update_player():
 
 # Function to delete a player by ID
 def delete_player():
+    """
+    Deletes a player from the system by their ID.
+
+    Parameters:
+    - None directly. Prompts the user for the player ID to delete.
+
+    Flow:
+    - Filters out the player with the matching ID.
+    - Updates the JSON file if the player is found and removed.
+    - Notifies the user if the player was not found.
+
+    Returns:
+    - None: Outputs appropriate status messages to the console.
+    """
+
     player_id = input("Enter the player ID to delete: ")
     players_data = read_json(PLAYER_FILE)
 

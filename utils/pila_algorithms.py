@@ -1,15 +1,30 @@
 class PriorityStack:
+    """
+    Implements a custom stack data structure with overwrite behavior on push,
+    using an internal list and index tracking.
+
+    Attributes:
+    - queue: list. Internal list used to store elements.
+    - index: int. Points to the current top of the stack.
+    """
+
     def __init__(self):
-        # The internal list will serve as our stack structure
+        """
+        Initializes an empty stack with an internal list and sets the top index to -1.
+        """
         self.queue = []
-        # The index keeps track of the current top of the stack
         self.index = -1
 
     def push(self, value):
         """
         Adds a new value to the top of the stack.
-        If the internal list already has an element at the top index, it is overwritten.
-        Otherwise, the value is appended to the list.
+        If a value already exists at that position, it is overwritten.
+
+        Parameters:
+        - value: any. The value to be added to the stack.
+
+        Returns:
+        - None. Modifies the stack in-place.
         """
         self.index += 1
         if self.index < len(self.queue):
@@ -20,7 +35,15 @@ class PriorityStack:
     def pop(self):
         """
         Removes and returns the value at the top of the stack.
-        Raises IndexError if the stack is empty.
+
+        Parameters:
+        - None.
+
+        Returns:
+        - The value at the top of the stack.
+
+        Raises:
+        - IndexError: if the stack is empty.
         """
         if self.index == -1:
             raise IndexError("Pop from empty stack")
@@ -31,7 +54,15 @@ class PriorityStack:
     def top(self):
         """
         Returns the value at the top of the stack without removing it.
-        Raises IndexError if the stack is empty.
+
+        Parameters:
+        - None.
+
+        Returns:
+        - The value at the top of the stack.
+
+        Raises:
+        - IndexError: if the stack is empty.
         """
         if self.isEmpty():
             raise IndexError("Top from empty stack")
@@ -40,6 +71,11 @@ class PriorityStack:
     def isEmpty(self):
         """
         Checks whether the stack is empty.
-        Returns True if empty, False otherwise.
+
+        Parameters:
+        - None.
+
+        Returns:
+        - True if the stack is empty, False otherwise.
         """
         return self.index == -1
