@@ -109,14 +109,13 @@ def metrics_menu():
             player_id = input("Player's ID: ")
             player = get_player_fromId(player_id)
             if player:
-                player.get_history()
+                player.get_last_n_history()
         elif choice == "3":
             ranking_players_in("games_won")
         elif choice == "4":
             ranking_players_in("games_lost")
         elif choice == "5":
-            # Placeholder: implementation for most played games metric
-            print("Feature coming soon.")
+            ranking_games_in("count")
         elif choice == "6":
             break
         else:

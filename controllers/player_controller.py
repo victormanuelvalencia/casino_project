@@ -21,7 +21,7 @@ def get_player_fromName(player_full_name):
             return player
 
     # If no match is found, print -1 and return False
-    print(-1)
+    # print(-1)
     return False
 
 # Binary search for a player by player_id
@@ -51,7 +51,7 @@ def get_player_fromId(player_id):
             left = mid + 1
 
     # No match found
-    print(-1)
+    # print(-1)
     return False
 
 # Function to create a new player

@@ -12,7 +12,6 @@ def play_slot_machine(player):
     """
     
     # Load game data and increment the play count
-    game_data = read_json(GAME_FILE)
     game = get_game_fromName("slot_machine")
     game.increment_count()
 
@@ -59,11 +58,12 @@ def play_slot_machine(player):
             player.set_history(f'Won: {earnings} in slot machine')
             player.set_balance(player.get_balance() + earnings)
             player.set_games_won(player.get_games_won() + 1)
+            update_game_in_data(game)
         else:
             print("You lost.")
             player.set_history(f'Lost: {bet} in slot machine')
             player.set_games_lost(player.get_games_lost() + 1)
-
+            update_game_in_data(game)
         # Ask the player if they want to play again
         again = input("Do you want to play again? (y/n): ").strip().lower()
         if again != 'y':

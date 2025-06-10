@@ -18,13 +18,16 @@ class Player:
         self.games_won = 0              # Counter for games won
         self.games_lost = 0             # Counter for games lost
         self.total_bet = 0              # Total amount bet by the player
+        self.VIP_player = self._check_vip()
+
+
 
     def __str__(self):
         """
         Returns a human-readable string representation of the player,
         including name, ID, and balance formatted to 2 decimals.
         """
-        return f"{self.full_name} (ID: {self.player_id}) - Balance: ${self.balance:.2f}"
+        return f"Name: {self.full_name} - (ID: {self.player_id}) - Balance: ${self.balance:.2f} - VIP: {self.VIP_player}"
 
     def to_dict(self):
         """
@@ -43,7 +46,8 @@ class Player:
             "history": self.history.to_list(),  # Convert stack to list for serialization
             "games_won": self.games_won,
             "games_lost": self.games_lost,
-            "total_bet": self.total_bet
+            "total_bet": self.total_bet,
+            "VIP_player": self.VIP_player
         }
 
     @classmethod
@@ -72,6 +76,7 @@ class Player:
         player.games_won = data.get("games_won", 0)
         player.games_lost = data.get("games_lost", 0)
         player.total_bet = data.get("total_bet", 0)
+        player.VIP_player = data.get("VIP_player", False)
         return player
 
     # The following commented methods are examples for balance updates and bets,
@@ -89,6 +94,9 @@ class Player:
         self.total_bet += amount
         self.add_history(f"Bet of ${amount:.2f} placed. Remaining balance: ${self.balance:.2f}")
     """
+
+    def _check_vip(self):
+        return self.balance > 1000
 
     # Getters
     def get_full_name(self):
@@ -111,6 +119,11 @@ class Player:
         """
         print(f"\nHistory of player {self.full_name} (ID: {self.player_id}):")
         self.history.show()
+
+    def get_last_n_history(self):
+        n = 10
+        print(f"\nLast {n} elements in the history of player {self.full_name} (ID: {self.player_id}):")
+        self.history.show_first_n_items(n)
 
     def get_games_won(self):
         # Returns the total games won by the player.
@@ -157,3 +170,4 @@ class Player:
     def set_total_bet(self, total_bet: float):
         # Sets or updates the total amount bet.
         self.total_bet = total_bet
+

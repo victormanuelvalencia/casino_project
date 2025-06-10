@@ -69,3 +69,17 @@ class Stack:
         else:
             for item in self.items:
                 print(item)
+
+    def show_first_n_items(self, n):
+        """
+        Prints the first `n` items of the stack (from bottom to top).
+        If the stack contains fewer than `n` items, it prints all of them.
+        """
+        if self.is_empty():
+            print("The stack is empty.")
+        else:
+            to_show = self.items[:n]
+            i = 1
+            for item in to_show:
+                print(f"{i}. {item}")
+                i += 1

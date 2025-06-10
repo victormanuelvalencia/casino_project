@@ -56,6 +56,8 @@ def blackjack(player, hand=0, turn=0, bet=0):
         player.set_balance(player.get_balance() - bet)
         player.set_total_bet(player.get_total_bet() + bet)
 
+
+
         # Deal two initial cards
         card1 = deal_card()
         card2 = deal_card()
@@ -87,6 +89,7 @@ def blackjack(player, hand=0, turn=0, bet=0):
             player.set_games_lost(player.get_games_lost() + 1)
             player.set_history(f'Lost: {bet} in blackjack')
             update_player_in_data(player)
+            update_game_in_data(game)
             return False
 
         # Otherwise, continue the game with the updated hand
@@ -100,6 +103,7 @@ def blackjack(player, hand=0, turn=0, bet=0):
         player.set_games_won(player.get_games_won() + 1)
         player.set_history(f'Won: {earn} in blackjack')
         update_player_in_data(player)
+        update_game_in_data(game)
 
 # Calculates the final gain based on hand value and bet amount
 def calculate_bet(bet, hand):

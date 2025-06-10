@@ -1,17 +1,33 @@
 [
     {
-        "full_name": "Victor V",
-        "player_id": "VV1",
-        "balance": 0.0,
-        "history": [
-            "Bet in slot machine: 300.0",
-            "Lost: 300.0 in slot machine",
-            "Bet in slot machine: 200.0",
-            "Lost: 200.0 in slot machine"
-        ],
+        "full_name": "Buitrago",
+        "player_id": "20B",
+        "balance": 2271.1800000000003,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 4,
+        "total_bet": 2400.0
+    },
+    {
+        "full_name": "Ana R",
+        "player_id": "AR5444",
+        "balance": 2778.65,
+        "history": [],
         "games_won": 0,
         "games_lost": 2,
         "total_bet": 500.0
+    },
+    {
+        "full_name": "Carlos P",
+        "player_id": "CP4333",
+        "balance": 7355.96,
+        "history": [
+            "Bet in blackjack: 4000.0",
+            "Won: 7238 in blackjack"
+        ],
+        "games_won": 1,
+        "games_lost": 0,
+        "total_bet": 4000.0
     },
     {
         "full_name": "Diego F",
@@ -23,77 +39,9 @@
         "total_bet": 0.0
     },
     {
-        "full_name": "Lucia B",
-        "player_id": "LB1000",
-        "balance": 1743.31,
-        "history": [],
-        "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0.0
-    },
-    {
-        "full_name": "Pedro C",
-        "player_id": "PC8777",
-        "balance": 2049.07,
-        "history": [],
-        "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0.0
-    },
-    {
-        "full_name": "Juan 2",
-        "player_id": "J021-",
-        "balance": 2262.63,
-        "history": [],
-        "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0.0
-    },
-    {
-        "full_name": "Buitrago",
-        "player_id": "20B",
-        "balance": 2271.1800000000003,
-        "history": [
-            "Apost\u00f3: 200.0",
-            "Perdi\u00f3: 200.0",
-            "Apost\u00f3: 1000.0",
-            "Perdi\u00f3: 1000.0",
-            "Apost\u00f3: 300.0",
-            "Perdi\u00f3: 300.0",
-            "Apost\u00f3: 900.0",
-            "Perdi\u00f3: 900.0"
-        ],
-        "games_won": 0,
-        "games_lost": 4,
-        "total_bet": 2400.0
-    },
-    {
         "full_name": "Elena T",
         "player_id": "ET9888",
         "balance": 2768.41,
-        "history": [],
-        "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0.0
-    },
-    {
-        "full_name": "Ana R",
-        "player_id": "AR5444",
-        "balance": 2778.65,
-        "history": [
-            "Apost\u00f3: 200.0",
-            "Perdi\u00f3: 200.0",
-            "Apost\u00f3: 300.0",
-            "Perdi\u00f3: 300.0"
-        ],
-        "games_won": 0,
-        "games_lost": 2,
-        "total_bet": 500.0
-    },
-    {
-        "full_name": "Luis M",
-        "player_id": "LM6555",
-        "balance": 3472.58,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
@@ -120,9 +68,59 @@
         "total_bet": 1341.02
     },
     {
-        "full_name": "Sofia N",
-        "player_id": "SN7666",
-        "balance": 3853.29,
+        "full_name": "Juan 2",
+        "player_id": "J021-",
+        "balance": 2262.63,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0.0
+    },
+    {
+        "full_name": "Juan H V",
+        "player_id": "JHV2121",
+        "balance": 999.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0,
+        "VIP_player": false
+    },
+    {
+        "full_name": "Juan P",
+        "player_id": "JP2121",
+        "balance": 2000.0,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0,
+        "VIP_player": true
+    },
+    {
+        "full_name": "Karen Daniela",
+        "player_id": "KD53",
+        "balance": 1323.79,
+        "history": [
+            "Bet in blackjack: 3000.0",
+            "Lost: 3000.0 in blackjack"
+        ],
+        "games_won": 0,
+        "games_lost": 1,
+        "total_bet": 3000.0
+    },
+    {
+        "full_name": "Lucia B",
+        "player_id": "LB1000",
+        "balance": 1743.31,
+        "history": [],
+        "games_won": 0,
+        "games_lost": 0,
+        "total_bet": 0.0
+    },
+    {
+        "full_name": "Luis M",
+        "player_id": "LM6555",
+        "balance": 3472.58,
         "history": [],
         "games_won": 0,
         "games_lost": 0,
@@ -131,28 +129,94 @@
     {
         "full_name": "Maria G",
         "player_id": "MG3222",
-        "balance": 3985.44,
-        "history": [],
-        "games_won": 0,
+        "balance": 5794.4400000000005,
+        "history": [
+            "Bet in blackjack: 2000.0",
+            "Won: 3809 in blackjack"
+        ],
+        "games_won": 1,
         "games_lost": 0,
-        "total_bet": 0.0
+        "total_bet": 2000.0
     },
     {
-        "full_name": "Carlos P",
-        "player_id": "CP4333",
-        "balance": 4117.96,
-        "history": [],
+        "full_name": "Pedro C",
+        "player_id": "PC8777",
+        "balance": 949.0700000000002,
+        "history": [
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine"
+        ],
         "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0.0
+        "games_lost": 10,
+        "total_bet": 1100.0
     },
     {
-        "full_name": "Karen Daniela",
-        "player_id": "KD53",
-        "balance": 4323.79,
-        "history": [],
+        "full_name": "Sofia N M",
+        "player_id": "SN7666",
+        "balance": 3000.0,
+        "history": [
+            "Bet in blackjack: 500.0",
+            "Lost: 500.0 in blackjack",
+            "Bet in blackjack: 300.0",
+            "Won: 585 in blackjack",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Lost: 100.0 in slot machine",
+            "Bet in slot machine: 100.0",
+            "Won: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Won: 400.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine"
+        ],
+        "games_won": 3,
+        "games_lost": 10,
+        "total_bet": 2700.0,
+        "VIP_player": false
+    },
+    {
+        "full_name": "Victor V",
+        "player_id": "VV1",
+        "balance": 0.0,
+        "history": [
+            "Bet in slot machine: 300.0",
+            "Lost: 300.0 in slot machine",
+            "Bet in slot machine: 200.0",
+            "Lost: 200.0 in slot machine"
+        ],
         "games_won": 0,
-        "games_lost": 0,
-        "total_bet": 0.0
+        "games_lost": 2,
+        "total_bet": 500.0
     }
 ]
