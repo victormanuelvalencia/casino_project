@@ -1,6 +1,5 @@
 from games.blackjack import blackjack
 from games.waiting_queue import PlayerQueue
-# main.py
 from controllers.player_controller import *
 from games.slot_machine import *
 from reports.report_generator import *

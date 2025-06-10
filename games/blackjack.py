@@ -56,8 +56,6 @@ def blackjack(player, hand=0, turn=0, bet=0):
         player.set_balance(player.get_balance() - bet)
         player.set_total_bet(player.get_total_bet() + bet)
 
-
-
         # Deal two initial cards
         card1 = deal_card()
         card2 = deal_card()

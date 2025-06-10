@@ -6,7 +6,14 @@ class PlayerQueue(Queue):
         """
         Collects players by their IDs via user input and enqueues them.
         Ensures that only existing players are added to the queue.
+
+        Parameters:
+        - None. This method relies on user input.
+
+        Returns:
+        - None. Players are added to the queue as side effects.
         """
+
         print("\n--- Add Players to the Queue ---")
         print("Enter the player IDs (one per line).")
         print("Type 'fin' to finish.\n")
@@ -40,10 +47,15 @@ class PlayerQueue(Queue):
         """
         Processes the queue by executing the provided game function
         for each player in FIFO order.
-        
+
         Parameters:
-        - game_function: a function that accepts a Player object and executes a game round.
+        - game_function: Function to be executed for each player in the queue.
+                         Must accept a single argument of type Player.
+
+        Returns:
+        - None. The function is applied to each player and the queue is emptied as a result.
         """
+
         print("\n--- Processing Player Queue ---")
 
         while not self.is_empty():

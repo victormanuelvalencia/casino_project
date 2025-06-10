@@ -6,29 +6,33 @@ from utils.file_administration import *
 
 def sort_elements_by(criteria, file):
     """
-    Sorts a list of elements (dictionaries) stored in a JSON file based on a given criteria.
-    The sorting algorithm used is Bubble Sort, which compares adjacent elements and swaps them
-    if they are in the wrong order. It operates on numerical or comparable values extracted by key.
+    Sorts elements in a JSON file using the Bubble Sort algorithm based on a specified criterion.
 
-    Args:
-        criteria (str): The key in each dictionary to sort by (e.g., 'balance', 'games_won').
-        file (str): The path to the JSON file that contains the list of elements.
+    This function reads a list of dictionaries from a JSON file, sorts them in ascending order
+    based on the specified key (criterion), and writes the sorted list back to the same file.
+    The sorting algorithm used is Bubble Sort, which is simple but not optimized for large datasets.
 
-    The sorted list is written back to the same JSON file after sorting.
+    Parameters:
+    - criteria (str): The dictionary key to sort by (e.g., 'balance', 'games_won', 'games_lost').
+    - file (str): The path to the JSON file containing the list of elements (players, games, etc.).
+
+    Returns:
+    - None. The sorted data is directly written back to the input file.
     """
+
     # Read data from the JSON file
     elemets = read_json(file)
     n = len(elemets)
 
-    # Bubble Sort algorithm: O(n^2)
+    # Perform Bubble Sort (O(n^2) complexity)
     for i in range(n):
         for j in range(0, n - i - 1):
             current_value = elemets[j].get(criteria, 0)
             next_value = elemets[j + 1].get(criteria, 0)
 
-            # Swap if current element is greater than the next one
             if current_value > next_value:
+                # Swap adjacent elements if out of order
                 elemets[j], elemets[j + 1] = elemets[j + 1], elemets[j]
 
-    # Write the sorted list back to the JSON file
+    # Write the sorted list back to the file
     write_json(elemets, file)

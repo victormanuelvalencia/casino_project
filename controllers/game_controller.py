@@ -4,6 +4,23 @@ from utils.sorting_algorithms import sort_elements_by
 from models.game import Game
 
 def get_game_fromName(game_name):
+    """
+    Searches for a game by its name using linear search after sorting the data.
+
+    Parameters:
+    - game_name (str): The name of the game to search for.
+
+    Process:
+    - Sorts the list of games stored in the JSON file by the "game_name" field.
+    - Reads the contents of the GAME_FILE (e.g., games.json).
+    - Iterates through each game entry, comparing the name field.
+    - If a match is found, converts the dictionary to a Game object.
+
+    Returns:
+    - Game: The matching Game object if found.
+    - False: If no game with the specified name is found.
+    """
+
     # Sorts the game data stored in the JSON file by the "game_name" field
     sort_elements_by("game_name", GAME_FILE)
 

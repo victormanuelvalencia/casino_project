@@ -7,8 +7,15 @@ from utils.config import *
 
 def play_slot_machine(player):
     """
-    Executes a slot machine game session for a given player.
-    Handles user interaction, bet processing, and updates the player's statistics accordingly.
+    Runs a slot machine session for the given player.
+    Handles betting, random symbol generation, win/loss evaluation, and updates the player data.
+
+    Parameters:
+    - player: Player object participating in the game. Must support methods for balance management,
+              game history tracking, and statistics updates.
+
+    Returns:
+    - None when the game ends. Updates are persisted automatically.
     """
     
     # Load game data and increment the play count

@@ -3,6 +3,18 @@ from utils.file_administration import read_json
 from utils.config import *
 
 def ranking_players_in(criteria):
+    """
+    Displays the top-ranking players based on a given criterion.
+    Sorts player data from a file and prints the top performers in descending order.
+
+    Parameters:
+    - criteria: str. The ranking criterion used to sort players.
+                Must be one of: "balance", "games_won", or "games_lost".
+
+    Returns:
+    - None. Outputs the ranking information directly to the console.
+    """
+
     # First, sort the player data based on the selected criterion (ascending order)
     sort_elements_by(criteria, PLAYER_FILE)
 
