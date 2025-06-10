@@ -1,6 +1,6 @@
 from utils.config import GAME_FILE 
 from utils.file_administration import read_json
-from utils.sorting_algorithms import sort_elements_by
+from utils.sorting_algorithms import sort_elements_by_bubble
 from models.game import Game
 
 def get_game_fromName(game_name):
@@ -22,7 +22,7 @@ def get_game_fromName(game_name):
     """
 
     # Sorts the game data stored in the JSON file by the "game_name" field
-    sort_elements_by("game_name", GAME_FILE)
+    sort_elements_by_bubble("game_name", GAME_FILE)
 
     # Reads and loads the content of the games.json file
     games_data = read_json(GAME_FILE)

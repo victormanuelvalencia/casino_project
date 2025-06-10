@@ -17,7 +17,7 @@ def get_player_fromName(player_full_name):
     """
 
     # Sort players by their full name before searching
-    sort_elements_by("full_name", PLAYER_FILE)
+    sort_elements_by_bubble("full_name", PLAYER_FILE)
 
     # Load player data from players.json
     players_data = read_json(PLAYER_FILE)
@@ -50,7 +50,7 @@ def get_player_fromId(player_id):
     """
 
     # Sort players by their ID before performing binary search
-    sort_elements_by("player_id", PLAYER_FILE)
+    sort_elements_by_bubble("player_id", PLAYER_FILE)
 
     # Load player data from players.json
     players_data = read_json(PLAYER_FILE)

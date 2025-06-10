@@ -4,7 +4,7 @@
 import json
 from utils.file_administration import *
 
-def sort_elements_by(criteria, file):
+def sort_elements_by_bubble(criteria, file):
     """
     Sorts elements in a JSON file using the Bubble Sort algorithm based on a specified criterion.
 

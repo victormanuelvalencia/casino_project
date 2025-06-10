@@ -3,7 +3,7 @@ from itertools import product
 
 from controllers.game_controller import get_game_fromName
 from utils.file_administration import *
-from utils.config import *
+
 
 def play_slot_machine(player):
     """

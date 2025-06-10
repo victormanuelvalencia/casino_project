@@ -1,4 +1,4 @@
-from utils.sorting_algorithms import sort_elements_by
+from utils.sorting_algorithms import sort_elements_by_bubble, sort_elements_by_merge
 from utils.file_administration import read_json
 from utils.config import *
 
@@ -16,7 +16,7 @@ def ranking_players_in(criteria):
     """
 
     # First, sort the player data based on the selected criterion (ascending order)
-    sort_elements_by(criteria, PLAYER_FILE)
+    sort_elements_by_merge(criteria, PLAYER_FILE)
 
     # Define label variables depending on the selected ranking criterion
     text = ""
@@ -55,7 +55,7 @@ def ranking_players_in(criteria):
 
 
 def ranking_games_in(criteria):
-    sort_elements_by(criteria, GAME_FILE)
+    sort_elements_by_bubble(criteria, GAME_FILE)
 
     # Define label variables depending on the selected ranking criterion
     text = ""

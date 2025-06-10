@@ -1,5 +1,5 @@
 from games.blackjack import blackjack
-from games.waiting_queue import PlayerQueue
+from utils.waiting_queue import PlayerQueue
 from controllers.player_controller import *
 from games.slot_machine import *
 from reports.report_generator import *
@@ -27,13 +27,13 @@ def player_menu():
         print("4. Update player")
         print("5. Delete player")
         print("6. Return to main menu")
-        choice = input("Select an option: ")
+        choice = input("Select an option: ").strip()
 
         if choice == "1":
-            pId = input("Enter player ID: ")
+            pId = input("Enter player ID: ").strip()
             get_player_fromId(pId)
         elif choice == "2":
-            pName = input("Enter player name: ")
+            pName = input("Enter player name: ").strip()
             get_player_fromName(pName)
         elif choice == "3":
             create_player()
@@ -100,12 +100,12 @@ def metrics_menu():
         print("5. Show most played games")
         print("6. Return to main menu")
 
-        choice = input("Choose an option: ")
+        choice = input("Choose an option: ").strip()
 
         if choice == "1":
             ranking_players_in("balance")
         elif choice == "2":
-            player_id = input("Player's ID: ")
+            player_id = input("Player's ID: ").strip()
             player = get_player_fromId(player_id)
             if player:
                 player.get_last_n_history()
@@ -133,7 +133,7 @@ def main_menu():
         print("2. Game Menu")
         print("3. Player Metrics")
         print("4. Exit")
-        choice = input("Select an option: ")
+        choice = input("Select an option: ").strip()
 
         if choice == "1":
             player_menu()
