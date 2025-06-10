@@ -36,3 +36,46 @@ def sort_elements_by(criteria, file):
 
     # Write the sorted list back to the file
     write_json(elemets, file)
+
+def sort_elements_by_merge(criteria, file):
+    """
+    Sorts elements in a JSON file using the Merge Sort algorithm based on a specified criterion.
+
+    Parameters:
+    - criteria (str): The dictionary key to sort by.
+    - file (str): The path to the JSON file.
+
+    Returns:
+    - None. The sorted list is written back to the same file.
+    """
+    elements = read_json(file)
+
+    def merge_sort(arr):
+        if len(arr) <= 1:
+            return arr
+
+        mid = len(arr) // 2
+        left = merge_sort(arr[:mid])
+        right = merge_sort(arr[mid:])
+        return merge(left, right)
+
+    def merge(left, right):
+        result = []
+        i = j = 0
+
+        while i < len(left) and j < len(right):
+            left_value = left[i].get(criteria, 0)
+            right_value = right[j].get(criteria, 0)
+            if left_value <= right_value:
+                result.append(left[i])
+                i += 1
+            else:
+                result.append(right[j])
+                j += 1
+
+        result.extend(left[i:])
+        result.extend(right[j:])
+        return result
+
+    sorted_elements = merge_sort(elements)
+    write_json(sorted_elements, file)
