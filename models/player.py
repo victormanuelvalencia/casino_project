@@ -1,7 +1,9 @@
 from utils.stack import Stack
 import datetime
 
+
 class Player:
+    # Contructor
     def __init__(self, full_name: str, player_id: str, balance: float):
         """
         Initializes a new Player instance.
@@ -147,7 +149,8 @@ class Player:
         self.player_id = player_id
 
     def set_balance(self, balance: float):
-        # Sets or updates the player's balance.
+        if balance < 0:
+            raise ValueError("Balance can't be negative.")
         self.balance = balance
 
     def set_history(self, action: str):
